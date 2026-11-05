@@ -15,11 +15,11 @@ pipeline {
             steps {
                 echo 'Setting up Python environment'
 
-                sh '''
-                    python3 --version
-                    python3 -m venv venv
-                    venv/bin/pip install --upgrade pip
-                    venv/bin/pip install -r requirements.txt
+                bat '''
+                    python --version
+                    python -m venv venv
+                    venv\\Scripts\\python.exe -m pip install --upgrade pip
+                    venv\\Scripts\\python.exe -m pip install -r requirements.txt
                 '''
             }
         }
@@ -28,8 +28,8 @@ pipeline {
             steps {
                 echo 'Running automated tests'
 
-                sh '''
-                    venv/bin/python -m pytest tests/ -v
+                bat '''
+                    venv\\Scripts\\python.exe -m pytest tests/ -v
                 '''
             }
         }
