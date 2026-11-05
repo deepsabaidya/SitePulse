@@ -2,6 +2,10 @@
 pipeline {
     agent any
 
+    environment {
+        PYTHON = 'C:\\Users\\hp\\AppData\\Local\\Python\\bin\\python.exe'
+    }
+
     stages {
 
         stage('Checkout') {
@@ -16,8 +20,8 @@ pipeline {
                 echo 'Setting up Python environment'
 
                 bat '''
-                    python --version
-                    python -m venv venv
+                    "%PYTHON%" --version
+                    "%PYTHON%" -m venv venv
                     venv\\Scripts\\python.exe -m pip install --upgrade pip
                     venv\\Scripts\\python.exe -m pip install -r requirements.txt
                 '''
